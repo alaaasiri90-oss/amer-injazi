@@ -133,12 +133,13 @@ header{
 }
 
 .portfolio{
-    max-width:1200px;
-    margin:auto;
-    padding:65px 25px;
+    width:100%;
+    padding:60px 6%;
+    margin:0;
 }
 
 .section-title{
+    width:100%;
     text-align:center;
     margin-bottom:40px;
 }
@@ -153,21 +154,62 @@ header{
 }
 
 .cards{
+    width:100%;
     display:grid;
-   grid-template-columns:repeat(3,1fr);
-    gap:20px;
+    grid-template-columns:repeat(3, minmax(0, 1fr));
+    gap:22px;
+    direction:rtl;
 }
 
 .card{
+    width:100%;
+    min-width:0;
+    min-height:210px;
+    padding:26px;
+    border-radius:20px;
     background:linear-gradient(145deg,#111c2e,#0d1726);
     border:1px solid rgba(255,255,255,.08);
-    border-radius:18px;
-    padding:27px;
-    min-height:200px;
     transition:.3s;
-    position:relative;
 }
 
+.card:hover{
+    transform:translateY(-6px);
+    border-color:#22d3ee;
+    box-shadow:0 12px 35px rgba(34,211,238,.12);
+}
+
+.icon{
+    width:52px;
+    height:52px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:14px;
+    background:rgba(34,211,238,.12);
+    font-size:25px;
+    margin-bottom:18px;
+}
+
+.card h3{
+    font-size:19px;
+    margin-bottom:8px;
+}
+
+.card p{
+    color:#94a3b8;
+    font-size:14px;
+    margin-bottom:18px;
+}
+
+.card a{
+    color:#22d3ee;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.card a:hover{
+    color:white;
+}
 .card:hover{
     transform:translateY(-6px);
     border-color:#22d3ee;
