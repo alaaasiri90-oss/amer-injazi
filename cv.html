@@ -6,3 +6,591 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>السيرة الذاتية | إنجازي</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Tahoma, Arial, sans-serif;
+    background:
+        radial-gradient(circle at 80% 10%,rgba(14,165,233,.16),transparent 32%),
+        #070d18;
+    color:white;
+    line-height:1.9;
+}
+
+
+/* الشريط العلوي */
+
+header{
+    width:100%;
+    min-height:72px;
+    padding:15px 6%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(7,13,24,.96);
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.logo{
+    color:#22d3ee;
+    font-size:25px;
+    font-weight:bold;
+}
+
+.home-link{
+    color:#cbd5e1;
+    text-decoration:none;
+    font-size:14px;
+    transition:.3s;
+}
+
+.home-link:hover{
+    color:#22d3ee;
+}
+
+
+/* مقدمة الصفحة */
+
+.hero{
+    min-height:340px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:50px 20px;
+
+    background:
+        radial-gradient(circle at top right,rgba(14,165,233,.30),transparent 40%),
+        linear-gradient(135deg,#0f172a,#082f49,#0f172a);
+}
+
+.hero-content{
+    max-width:850px;
+}
+
+.badge{
+    display:inline-block;
+    padding:7px 18px;
+    margin-bottom:18px;
+    border:1px solid #22d3ee;
+    border-radius:30px;
+    color:#67e8f9;
+    background:rgba(34,211,238,.08);
+}
+
+.hero h1{
+    font-size:46px;
+    margin-bottom:8px;
+}
+
+.hero h2{
+    color:#cbd5e1;
+    font-size:23px;
+    font-weight:normal;
+}
+
+.hero p{
+    margin-top:12px;
+    color:#94a3b8;
+}
+
+
+/* المحتوى */
+
+.container{
+    width:92%;
+    max-width:1150px;
+    margin:55px auto;
+}
+
+
+/* صورة السيرة */
+
+.cv-showcase{
+    padding:27px;
+    margin-bottom:30px;
+    text-align:center;
+
+    background:linear-gradient(145deg,#111c2e,#0d1726);
+
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:24px;
+
+    box-shadow:0 15px 45px rgba(0,0,0,.25);
+}
+
+.cv-showcase h2{
+    color:#22d3ee;
+    font-size:28px;
+    margin-bottom:7px;
+}
+
+.cv-showcase p{
+    color:#94a3b8;
+    margin-bottom:22px;
+}
+
+.cv-image{
+    display:block;
+    width:100%;
+    height:auto;
+    border-radius:17px;
+    border:1px solid rgba(255,255,255,.12);
+}
+
+.view-btn{
+    display:inline-block;
+    margin-bottom:23px;
+    padding:11px 24px;
+
+    border-radius:13px;
+
+    background:linear-gradient(135deg,#22d3ee,#38bdf8);
+
+    color:#07111f;
+    text-decoration:none;
+    font-weight:bold;
+
+    transition:.3s;
+}
+
+.view-btn:hover{
+    transform:translateY(-3px);
+}
+
+
+/* أقسام المعلومات */
+
+.section{
+    margin-bottom:24px;
+    padding:30px;
+
+    background:linear-gradient(145deg,#111c2e,#0d1726);
+
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:22px;
+}
+
+.section h2{
+    color:#22d3ee;
+    margin-bottom:16px;
+    font-size:24px;
+}
+
+.section p{
+    color:#cbd5e1;
+}
+
+
+/* البطاقات */
+
+.info-grid{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:17px;
+}
+
+.info-card{
+    padding:20px;
+    border-radius:16px;
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.07);
+}
+
+.info-card strong{
+    display:block;
+    color:#67e8f9;
+    margin-bottom:5px;
+}
+
+
+/* القوائم */
+
+.clean-list{
+    list-style:none;
+}
+
+.clean-list li{
+    position:relative;
+    padding:9px 28px 9px 5px;
+    color:#cbd5e1;
+    border-bottom:1px solid rgba(255,255,255,.05);
+}
+
+.clean-list li:last-child{
+    border-bottom:none;
+}
+
+.clean-list li::before{
+    content:"✓";
+    position:absolute;
+    right:0;
+    color:#22d3ee;
+    font-weight:bold;
+}
+
+
+/* نقاط القوة */
+
+.strength-grid{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:15px;
+}
+
+.strength{
+    padding:17px;
+    border-radius:15px;
+    background:rgba(34,211,238,.06);
+    border:1px solid rgba(34,211,238,.13);
+}
+
+
+/* التذييل */
+
+footer{
+    width:100%;
+    padding:32px 20px;
+    text-align:center;
+
+    background:#050a12;
+    border-top:1px solid rgba(255,255,255,.07);
+
+    color:#94a3b8;
+}
+
+footer strong{
+    color:#22d3ee;
+}
+
+
+/* الجوال */
+
+@media(max-width:700px){
+
+    .hero h1{
+        font-size:36px;
+    }
+
+    .hero h2{
+        font-size:19px;
+    }
+
+    .info-grid,
+    .strength-grid{
+        grid-template-columns:1fr;
+    }
+
+    .container{
+        width:94%;
+    }
+
+    .section,
+    .cv-showcase{
+        padding:20px;
+    }
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <div class="logo">
+        إنجازي
+    </div>
+
+    <a href="index.html" class="home-link">
+        العودة للرئيسية ←
+    </a>
+
+</header>
+
+
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <span class="badge">
+            التعريف المهني
+        </span>
+
+        <h1>
+            السيرة الذاتية
+        </h1>
+
+        <h2>
+            الأستاذ / عامر بن عبده المحجاني
+        </h2>
+
+        <p>
+            رائد نشاط | شغوف بالإبداع والتقنية
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<main class="container">
+
+
+<!-- صورة السيرة -->
+
+<section class="cv-showcase">
+
+    <h2>
+        السيرة الذاتية المهنية
+    </h2>
+
+    <p>
+        عرض موجز للمسيرة المهنية والمؤهلات والخبرات
+        ونقاط القوة والتطوير المهني.
+    </p>
+
+    <a href="amer-cv.jpg"
+       target="_blank"
+       class="view-btn">
+        عرض السيرة بالحجم الكامل
+    </a>
+
+    <img
+        src="amer-cv.jpg"
+        alt="السيرة الذاتية للأستاذ عامر بن عبده المحجاني"
+        class="cv-image"
+    >
+
+</section>
+
+
+
+<!-- عن المعلم -->
+
+<section class="section">
+
+    <h2>عن المعلم</h2>
+
+    <p>
+        يجمع الأستاذ عامر بن عبده المحجاني بين الأداء التعليمي الفعال
+        والابتكار، ويؤمن بأن المدرسة بيئة لبناء الشخصية قبل المعرفة،
+        ويسعى بصورة مستمرة إلى صناعة تجربة تعليمية ملهمة للطلاب.
+    </p>
+
+</section>
+
+
+
+<!-- معلومات أساسية -->
+
+<section class="section">
+
+    <h2>المعلومات المهنية</h2>
+
+    <div class="info-grid">
+
+        <div class="info-card">
+            <strong>الاسم</strong>
+            عامر بن عبده المحجاني
+        </div>
+
+        <div class="info-card">
+            <strong>المجال</strong>
+            رائد نشاط مدرسي
+        </div>
+
+        <div class="info-card">
+            <strong>الاهتمامات</strong>
+            الإبداع والتقنية والأنشطة الطلابية
+        </div>
+
+        <div class="info-card">
+            <strong>المؤهل</strong>
+            خريج جامعة الملك خالد عام 1422هـ
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- المؤهلات -->
+
+<section class="section">
+
+    <h2>المؤهلات والمرحلة التأسيسية</h2>
+
+    <ul class="clean-list">
+
+        <li>التخرج من جامعة الملك خالد عام 1422هـ.</li>
+
+        <li>تطوير مستمر للمهارات المهنية.</li>
+
+        <li>
+            مشاركة فعالة في المحافل التعليمية
+            والأنشطة المدرسية.
+        </li>
+
+        <li>
+            حضور مميز في المسرح المدرسي
+            والبرامج الإبداعية.
+        </li>
+
+    </ul>
+
+</section>
+
+
+
+<!-- المسار الوظيفي -->
+
+<section class="section">
+
+    <h2>المسار الوظيفي والمدارس</h2>
+
+    <ul class="clean-list">
+
+        <li>مدرسة عبدالله بن مسعود برجال ألمع.</li>
+
+        <li>مدرسة عمرو بن شعيب برجال ألمع.</li>
+
+        <li>مدرسة الحوض والرجاء برجال ألمع.</li>
+
+        <li>مدرسة شوحطة وبلاد الشهداء بني مالك.</li>
+
+        <li>مدرسة خباب بن الأرت والمنح بحي الموظفين.</li>
+
+        <li>تكليف لمتوسطة الإحسان.</li>
+
+        <li>تكليف لمتوسطة التحفيظ.</li>
+
+        <li>متوسطة أبو الحسن الندوي.</li>
+
+        <li>التكليف بالنشاط بالتفريغ من عام 1435هـ.</li>
+
+        <li>
+            العمل بمدرسة الرحمانية،
+            ثم ضُمّت لمدرسة السعودية.
+        </li>
+
+        <li>
+            حاليًا بمدرسة الملك عبدالعزيز بأبها.
+        </li>
+
+    </ul>
+
+</section>
+
+
+
+<!-- نقاط القوة -->
+
+<section class="section">
+
+    <h2>نقاط القوة</h2>
+
+    <div class="strength-grid">
+
+        <div class="strength">
+            🚀 قيادة الأنشطة الطلابية وإدارتها بفاعلية
+        </div>
+
+        <div class="strength">
+            💡 الإبداع في تصميم البرامج التعليمية
+        </div>
+
+        <div class="strength">
+            🔗 دمج التقنية في التعليم
+        </div>
+
+        <div class="strength">
+            🤝 بناء علاقات إيجابية مع الطلاب وتحفيزهم
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- التطوير المهني -->
+
+<section class="section">
+
+    <h2>الأوسمة والتطوير المهني</h2>
+
+    <ul class="clean-list">
+
+        <li>
+            شهادات شكر وتكريم من إدارة التعليم
+            تقديرًا للجهود المهنية.
+        </li>
+
+        <li>
+            تطوير ذاتي مستمر في المجال التقني.
+        </li>
+
+        <li>
+            توظيف التقنية في التعليم والأنشطة الطلابية.
+        </li>
+
+    </ul>
+
+</section>
+
+
+
+<!-- الرؤية -->
+
+<section class="section">
+
+    <h2>الرؤية والهدف</h2>
+
+    <p>
+        إحداث أثر تعليمي وتربوي مستدام،
+        وبناء جيل واثق ومبدع وقادر على مواكبة المستقبل.
+    </p>
+
+</section>
+
+
+</main>
+
+
+
+<footer>
+
+    منصة <strong>إنجازي</strong>
+
+    <br>
+
+    الأستاذ / عامر بن عبده المحجاني
+
+    <br>
+
+    «إنجاز اليوم... أثر يبقى للغد»
+
+</footer>
+
+
+</body>
+
+</html>
