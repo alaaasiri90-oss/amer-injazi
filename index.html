@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>إنجازي | عامر بن عبده المحجاني</title>
+
+  <style>
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
+
+    body{
+      font-family:Tahoma, Arial, sans-serif;
+      background:#07111f;
+      color:white;
+      line-height:1.8;
+    }
+
+    header{
+      padding:22px 8%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      border-bottom:1px solid rgba(255,255,255,.1);
+    }
+
+    .logo{
+      font-size:25px;
+      font-weight:bold;
+      color:#38d9ff;
+    }
+
+    .hero{
+      min-height:500px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:60px 20px;
+      background:
+      radial-gradient(circle at top,#173b62 0%,#0b1c32 45%,#07111f 75%);
+    }
+
+    .hero-content{
+      max-width:900px;
+    }
+
+    .badge{
+      display:inline-block;
+      padding:7px 20px;
+      border:1px solid #38d9ff;
+      border-radius:30px;
+      color:#38d9ff;
+      margin-bottom:20px;
+    }
+
+    h1{
+      font-size:60px;
+      margin-bottom:10px;
+    }
+
+    h1 span{
+      color:#38d9ff;
+    }
+
+    .name{
+      font-size:28px;
+      margin-bottom:15px;
+    }
+
+    .slogan{
+      color:#cbd5e1;
+      font-size:19px;
+      margin-bottom:30px;
+    }
+
+    .quote{
+      margin-top:30px;
+      color:#38d9ff;
+      font-size:20px;
+      font-weight:bold;
+    }
+
+    .sections{
+      padding:70px 8%;
+    }
+
+    .sections h2{
+      text-align:center;
+      font-size:36px;
+      margin-bottom:10px;
+    }
+
+    .section-intro{
+      text-align:center;
+      color:#94a3b8;
+      margin-bottom:40px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:20px;
+    }
+
+    .card{
+      background:linear-gradient(145deg,#10233c,#0b1728);
+      padding:28px 22px;
+      border-radius:18px;
+      border:1px solid rgba(56,217,255,.18);
+      min-height:150px;
+      transition:.3s;
+      text-decoration:none;
+      color:white;
+      display:block;
+    }
+
+    .card:hover{
+      transform:translateY(-6px);
+      border-color:#38d9ff;
+      box-shadow:0 10px 30px rgba(56,217,255,.12);
+    }
+
+    .icon{
+      font-size:28px;
+      margin-bottom:10px;
+    }
+
+    .card h3{
+      color:#fff;
+      font-size:19px;
+      margin-bottom:8px;
+    }
+
+    .card p{
+      color:#94a3b8;
+      font-size:14px;
+    }
+
+    footer{
+      text-align:center;
+      padding:30px;
+      border-top:1px solid rgba(255,255,255,.1);
+      color:#94a3b8;
+    }
+
+    @media(max-width:600px){
+      h1{font-size:42px;}
+      .name{font-size:22px;}
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">إنجازي</div>
+  <div>ملف الإنجاز المهني</div>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+
+    <div class="badge">ملف الإنجاز المهني</div>
+
+    <h1>منصة <span>إنجازي</span></h1>
+
+    <div class="name">
+      الأستاذ / عامر بن عبده المحجاني
+    </div>
+
+    <p class="slogan">
+      مساحة رقمية توثق الإنجازات المهنية، والمبادرات،
+      والبرامج والأنشطة والأعمال المتميزة خلال العام الدراسي.
+    </p>
+
+    <div class="quote">
+      «إنجاز اليوم... أثرٌ يبقى للغد»
+    </div>
+
+  </div>
+</section>
+
+
+<section class="sections">
+
+<h2>ملف الإنجاز</h2>
+
+<p class="section-intro">
+استعرض مجالات العمل والإنجاز المهني
+</p>
+
+<div class="grid">
+
+<a class="card" href="#">
+<div class="icon">👤</div>
+<h3>السيرة الذاتية</h3>
+<p>المعلومات المهنية والخبرات والمؤهلات.</p>
+</a>
+
+<a class="card" href="#">
+<div class="icon">✉️</div>
+<h3>الرسالة</h3>
+<p>الرسالة المهنية والتربوية.</p>
+</a>
+
+<a class="card" href="#">
+<div class="icon">🎯</div>
+<h3>الرؤية</h3>
+<p>الرؤية والتطلعات المهنية.</p>
+</a>
+
+<a class="card" href="#">
+<div class="icon">🏆</div>
+<h3>الشهادات والإنجازات</h3>
+<p>الشهادات والتكريمات وأبرز الإنجازات.</p>
+</a>
+
+<a class="card" href="#">
+<div class="icon">📋</div>
+<h3>الواجبات الوظيفية</h3>
+<p>المهام والمسؤوليات المهنية.</p>
+</a>
+
+<a class="card" href="#">
+<div class="icon">🤝</div>
+<h3>التفاعل مع المجتمع المهني</h3>
+<p>المشاركة والتعاون مع المجتمع المهني.</p>
+</a>
+
+<a class="card" href="#">
+<div class="icon">👨‍👩‍👦</div>
+<h3>التفاعل مع أولياء الأمور</h3>
+<p>التواصل والشراكة مع أولياء الأمور.</p>
+</a>
+
+<a class="card" href="#">
+<div class="icon">📅</div>
+<h3>إعداد خطة مزمنة ومعتمدة لبرامج وفعاليات النشاط الطلابي</h3>
+<p>توثيق الخطط والبرامج والفعاليات المعتمدة.</p>
+</a>
+
+<a class="card" href="#">
+<div class="icon">🏫</div>
+<h3>تهيئة البيئة المدرسية للبرامج والأنشطة الطلابية</h3>
+<p>تهيئة البيئة الداعمة لتنفيذ الأنشطة والبرامج.</p>
+</a>
+
+<a class="card" href="#">
+<div class="icon">💡</div>
+<h3>دعم المتعلمين وفق احتياجاتهم وميولهم للأنشطة</h3>
+<p>برامج وممارسات تراعي احتياجات وميول المتعلمين.</p>
+</a>
+
+<a class="card" href="#">
+<div class="icon">⭐</div>
+<h3>تحفيز المتعلمين على المشاركة في الأنشطة المدرسية</h3>
+<p>المبادرات وأساليب التحفيز والمشاركة الطلابية.</p>
+</a>
+
+</div>
+</section>
+
+<footer>
+إنجازي © الأستاذ عامر بن عبده المحجاني
+</footer>
+
+</body>
+</html>
