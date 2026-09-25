@@ -287,9 +287,8 @@ async function loadCertificates() {
 
     try {
 
-        const api =
-        https://api.github.com/repos/${owner}/${repo}/git/trees/main?recursive=1;
-
+       const api = 
+https://api.github.com/repos/${owner}/${repo}/git/trees/main?recursive=1;
         const response = await fetch(api);
 
         if (!response.ok) {
