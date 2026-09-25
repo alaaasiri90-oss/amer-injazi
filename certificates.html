@@ -275,178 +275,109 @@ footer{
 
 <script>
 
+<script>
+
 const owner = "alaaasiri90-oss";
-const repo  = "amer-injazi";
+const repo = "amer-injazi";
 
-const rootAPI =
-https://api.github.com/repos/${owner}/${repo}/contents;
+const grid = document.getElementById("certificatesGrid");
+const counter = document.getElementById("counter");
 
-const folderAPI =
-https://api.github.com/repos/${owner}/${repo}/contents/certificates;
+async function loadCertificates() {
 
+    try {
 
-function isCertificate(file){
+        const api =
+        https://api.github.com/repos/${owner}/${repo}/git/trees/main?recursive=1;
 
-    const name = file.name.toLowerCase();
+        const response = await fetch(api);
 
-    const allowed =
-        /\.(jpg|jpeg|png|webp|pdf)$/i.test(name);
-
-    const certificateName =
-        name.startsWith("certificate");
-
-    const numberName =
-        /^\d+\.(jpg|jpeg|png|webp|pdf)$/i.test(name);
-
-    return (
-        file.type === "file" &&
-        allowed &&
-        (certificateName || numberName)
-    );
-}
-
-
-function naturalSort(a,b){
-
-    return a.name.localeCompare(
-        b.name,
-        undefined,
-        {
-            numeric:true,
-            sensitivity:"base"
+        if (!response.ok) {
+            throw new Error("GitHub API error");
         }
-    );
 
-}
+        const data = await response.json();
 
+        let files = data.tree.filter(item => {
 
-async function loadCertificates(){
+            if (item.type !== "blob") return false;
 
-    const grid =
-        document.getElementById("certificatesGrid");
+            const path = item.path.toLowerCase();
 
-    const counter =
-        document.getElementById("counter");
+            const validExtension =
+                /\.(jpg|jpeg|png|webp|pdf)$/i.test(path);
 
-    try{
+            if (!validExtension) return false;
 
-        const results =
-            await Promise.allSettled([
+            const fileName =
+                path.split("/").pop();
 
-                fetch(rootAPI).then(r => r.json()),
-
-                fetch(folderAPI).then(r => {
-                    if(!r.ok) return [];
-                    return r.json();
-                })
-
-            ]);
-
-
-        let files = [];
-
-
-        results.forEach(result => {
-
-            if(
-                result.status === "fulfilled" &&
-                Array.isArray(result.value)
-            ){
-
-                files.push(...result.value);
-
-            }
-
-        });
-
-
-        files =
-            files.filter(isCertificate);
-
-
-        const unique =
-            new Map();
-
-
-        files.forEach(file => {
-
-            unique.set(
-                file.path,
-                file
+            return (
+                path.startsWith("certificates/") ||
+                fileName.startsWith("certificate") ||
+                /^\d+\.(jpg|jpeg|png|webp|pdf)$/i.test(fileName)
             );
 
         });
 
-
-        files =
-            [...unique.values()]
-            .sort(naturalSort);
-
+        files.sort((a, b) =>
+            a.path.localeCompare(
+                b.path,
+                undefined,
+                { numeric: true }
+            )
+        );
 
         grid.innerHTML = "";
 
-
-        if(files.length === 0){
-
-            grid.innerHTML =
-            `
-            <div class="empty">
-            لم يتم العثور على شهادات حتى الآن.
-            </div>
-            `;
+        if (files.length === 0) {
 
             counter.textContent =
-            "لا توجد شهادات معروضة حاليًا";
+                "لم يتم العثور على شهادات";
+
+            grid.innerHTML =
+                `<div class="empty">
+                    لا توجد شهادات معروضة حاليًا.
+                </div>`;
 
             return;
-
         }
 
-
         counter.textContent =
-        عدد الشهادات المعروضة: ${files.length};
+            عدد الشهادات المعروضة: ${files.length};
 
+        files.forEach((file, index) => {
 
-        files.forEach((file,index) => {
+            const rawURL =
+                https://raw.githubusercontent.com/${owner}/${repo}/main/${file.path};
+
+            const extension =
+                file.path.split(".").pop().toLowerCase();
+
+            const isPDF =
+                extension === "pdf";
 
             const card =
                 document.createElement("div");
 
             card.className = "card";
 
+            card.innerHTML = `
 
-            const extension =
-                file.name
-                .split(".")
-                .pop()
-                .toLowerCase();
-
-
-            const isPDF =
-                extension === "pdf";
-
-
-            const preview = isPDF
-
-            ? `
-                <div class="preview">
-                    <div class="pdf-icon">📄</div>
-                </div>
-              `
-
-            : `
-                <div class="preview">
-                    <img
-                    src="${file.download_url}"
-                    alt="شهادة ${index + 1}"
-                    loading="lazy">
-                </div>
-              `;
-
-
-            card.innerHTML =
-            `
-                ${preview}
+                ${
+                    isPDF
+                    ?
+                    `<div class="preview">
+                        <div class="pdf-icon">📄</div>
+                    </div>`
+                    :
+                    `<div class="preview">
+                        <img
+                            src="${rawURL}"
+                            alt="شهادة ${index + 1}"
+                            loading="lazy">
+                    </div>`
+                }
 
                 <div class="card-body">
 
@@ -455,48 +386,45 @@ async function loadCertificates(){
                     </h3>
 
                     <div class="file-name">
-                        ${file.name}
+                        ${file.path.split("/").pop()}
                     </div>
 
                     <a
-                    href="${file.download_url}"
-                    target="_blank"
-                    class="open-btn">
+                        href="${rawURL}"
+                        target="_blank"
+                        class="open-btn">
                         عرض الشهادة
                     </a>
 
                 </div>
             `;
 
-
             grid.appendChild(card);
 
         });
 
-
     }
 
-    catch(error){
-
-        grid.innerHTML =
-        `
-        <div class="error">
-        تعذر تحميل الشهادات حاليًا.
-        </div>
-        `;
+    catch (error) {
 
         counter.textContent =
-        "تعذر تحميل الشهادات";
+            "تعذر تحميل الشهادات";
+
+        grid.innerHTML =
+            `<div class="error">
+                حدثت مشكلة أثناء تحميل الشهادات.
+                حدّث الصفحة وحاول مرة أخرى.
+            </div>`;
+
+        console.error(error);
 
     }
 
 }
 
-
 loadCertificates();
 
 </script>
-
 
 </body>
 </html>
