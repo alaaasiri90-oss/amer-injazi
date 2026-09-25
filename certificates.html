@@ -1,1 +1,502 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
 
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>الشهادات والإنجازات | إنجازي</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Tahoma, Arial, sans-serif;
+    background:#070d18;
+    color:white;
+    line-height:1.8;
+}
+
+header{
+    min-height:72px;
+    padding:15px 6%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:#080f1b;
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.logo{
+    color:#22d3ee;
+    font-size:25px;
+    font-weight:bold;
+}
+
+.back{
+    color:#cbd5e1;
+    text-decoration:none;
+}
+
+.hero{
+    min-height:300px;
+    padding:55px 20px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+
+    background:
+    radial-gradient(circle at top right,rgba(14,165,233,.30),transparent 40%),
+    linear-gradient(135deg,#0f172a,#082f49,#0f172a);
+}
+
+.badge{
+    display:inline-block;
+    padding:7px 18px;
+    margin-bottom:16px;
+    border-radius:30px;
+    border:1px solid #22d3ee;
+    color:#67e8f9;
+}
+
+.hero h1{
+    font-size:44px;
+    margin-bottom:8px;
+}
+
+.hero p{
+    color:#cbd5e1;
+}
+
+.container{
+    width:92%;
+    max-width:1250px;
+    margin:55px auto;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:35px;
+}
+
+.section-title h2{
+    font-size:34px;
+}
+
+.section-title p{
+    color:#94a3b8;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:22px;
+}
+
+.card{
+    overflow:hidden;
+    border-radius:20px;
+    background:linear-gradient(145deg,#111c2e,#0d1726);
+    border:1px solid rgba(255,255,255,.08);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-6px);
+    border-color:#22d3ee;
+}
+
+.preview{
+    width:100%;
+    height:230px;
+    background:#0b1524;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+}
+
+.preview img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    background:white;
+}
+
+.pdf-icon{
+    font-size:70px;
+}
+
+.card-body{
+    padding:20px;
+}
+
+.card h3{
+    margin-bottom:6px;
+}
+
+.file-name{
+    color:#64748b;
+    font-size:12px;
+    direction:ltr;
+    text-align:right;
+    word-break:break-all;
+}
+
+.open-btn{
+    display:block;
+    margin-top:16px;
+    padding:9px 15px;
+    text-align:center;
+    text-decoration:none;
+    border-radius:11px;
+    background:#22d3ee;
+    color:#07111f;
+    font-weight:bold;
+}
+
+.loading,
+.empty,
+.error{
+    grid-column:1/-1;
+    text-align:center;
+    padding:45px;
+    color:#94a3b8;
+}
+
+footer{
+    margin-top:60px;
+    padding:30px;
+    text-align:center;
+    background:#050a12;
+    color:#94a3b8;
+}
+
+@media(max-width:900px){
+    .grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:600px){
+
+    .grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero h1{
+        font-size:34px;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<header>
+
+<div class="logo">
+    إنجازي
+</div>
+
+<a href="index.html" class="back">
+    العودة للرئيسية ←
+</a>
+
+</header>
+
+
+<section class="hero">
+
+<div>
+
+<span class="badge">
+    ملف الإنجاز المهني
+</span>
+
+<h1>
+    الشهادات والإنجازات
+</h1>
+
+<p>
+    معرض رقمي لشهادات الشكر والتقدير والدورات والإنجازات المهنية
+</p>
+
+</div>
+
+</section>
+
+
+<main class="container">
+
+<div class="section-title">
+
+<h2>
+    معرض الشهادات
+</h2>
+
+<p id="counter">
+    جاري تحميل الشهادات...
+</p>
+
+</div>
+
+
+<div class="grid" id="certificatesGrid">
+
+<div class="loading">
+    جاري تحميل الشهادات...
+</div>
+
+</div>
+
+</main>
+
+
+<footer>
+
+منصة إنجازي
+<br>
+الأستاذ / عامر بن عبده المحجاني
+<br>
+«إنجاز اليوم... أثر يبقى للغد»
+
+</footer>
+
+
+<script>
+
+const owner = "alaaasiri90-oss";
+const repo  = "amer-injazi";
+
+const rootAPI =
+https://api.github.com/repos/${owner}/${repo}/contents;
+
+const folderAPI =
+https://api.github.com/repos/${owner}/${repo}/contents/certificates;
+
+
+function isCertificate(file){
+
+    const name = file.name.toLowerCase();
+
+    const allowed =
+        /\.(jpg|jpeg|png|webp|pdf)$/i.test(name);
+
+    const certificateName =
+        name.startsWith("certificate");
+
+    const numberName =
+        /^\d+\.(jpg|jpeg|png|webp|pdf)$/i.test(name);
+
+    return (
+        file.type === "file" &&
+        allowed &&
+        (certificateName || numberName)
+    );
+}
+
+
+function naturalSort(a,b){
+
+    return a.name.localeCompare(
+        b.name,
+        undefined,
+        {
+            numeric:true,
+            sensitivity:"base"
+        }
+    );
+
+}
+
+
+async function loadCertificates(){
+
+    const grid =
+        document.getElementById("certificatesGrid");
+
+    const counter =
+        document.getElementById("counter");
+
+    try{
+
+        const results =
+            await Promise.allSettled([
+
+                fetch(rootAPI).then(r => r.json()),
+
+                fetch(folderAPI).then(r => {
+                    if(!r.ok) return [];
+                    return r.json();
+                })
+
+            ]);
+
+
+        let files = [];
+
+
+        results.forEach(result => {
+
+            if(
+                result.status === "fulfilled" &&
+                Array.isArray(result.value)
+            ){
+
+                files.push(...result.value);
+
+            }
+
+        });
+
+
+        files =
+            files.filter(isCertificate);
+
+
+        const unique =
+            new Map();
+
+
+        files.forEach(file => {
+
+            unique.set(
+                file.path,
+                file
+            );
+
+        });
+
+
+        files =
+            [...unique.values()]
+            .sort(naturalSort);
+
+
+        grid.innerHTML = "";
+
+
+        if(files.length === 0){
+
+            grid.innerHTML =
+            `
+            <div class="empty">
+            لم يتم العثور على شهادات حتى الآن.
+            </div>
+            `;
+
+            counter.textContent =
+            "لا توجد شهادات معروضة حاليًا";
+
+            return;
+
+        }
+
+
+        counter.textContent =
+        عدد الشهادات المعروضة: ${files.length};
+
+
+        files.forEach((file,index) => {
+
+            const card =
+                document.createElement("div");
+
+            card.className = "card";
+
+
+            const extension =
+                file.name
+                .split(".")
+                .pop()
+                .toLowerCase();
+
+
+            const isPDF =
+                extension === "pdf";
+
+
+            const preview = isPDF
+
+            ? `
+                <div class="preview">
+                    <div class="pdf-icon">📄</div>
+                </div>
+              `
+
+            : `
+                <div class="preview">
+                    <img
+                    src="${file.download_url}"
+                    alt="شهادة ${index + 1}"
+                    loading="lazy">
+                </div>
+              `;
+
+
+            card.innerHTML =
+            `
+                ${preview}
+
+                <div class="card-body">
+
+                    <h3>
+                        شهادة رقم ${index + 1}
+                    </h3>
+
+                    <div class="file-name">
+                        ${file.name}
+                    </div>
+
+                    <a
+                    href="${file.download_url}"
+                    target="_blank"
+                    class="open-btn">
+                        عرض الشهادة
+                    </a>
+
+                </div>
+            `;
+
+
+            grid.appendChild(card);
+
+        });
+
+
+    }
+
+    catch(error){
+
+        grid.innerHTML =
+        `
+        <div class="error">
+        تعذر تحميل الشهادات حاليًا.
+        </div>
+        `;
+
+        counter.textContent =
+        "تعذر تحميل الشهادات";
+
+    }
+
+}
+
+
+loadCertificates();
+
+</script>
+
+
+</body>
+</html>
