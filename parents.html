@@ -2,167 +2,314 @@
 <html lang="ar" dir="rtl">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>التفاعل مع أولياء الأمور | منصة إنجازي</title>
+    <title>التفاعل مع أولياء الأمور | منصة إنجازي</title>
 
-<style>
+    <style>
 
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-}
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-body{
-    font-family:Tahoma, Arial, sans-serif;
-    background:#07111f;
-    color:#fff;
-    line-height:1.8;
-}
+        html {
+            scroll-behavior: smooth;
+        }
 
-header{
-    min-height:72px;
-    padding:15px 6%;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    background:#080f1b;
-    border-bottom:1px solid rgba(255,255,255,.08);
-}
+        body {
+            font-family: Tahoma, Arial, sans-serif;
+            background: #07111f;
+            color: #ffffff;
+            line-height: 1.8;
+        }
 
-.logo{
-    color:#22d3ee;
-    font-size:25px;
-    font-weight:bold;
-}
 
-.back{
-    color:#cbd5e1;
-    text-decoration:none;
-}
+        /* الشريط العلوي */
 
-.hero{
-    min-height:310px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:50px 20px;
-    background:
-        radial-gradient(circle at top right,rgba(14,165,233,.30),transparent 40%),
-        linear-gradient(135deg,#0f172a,#082f49,#0f172a);
-}
+        header {
+            min-height: 72px;
+            padding: 15px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #080f1b;
+            border-bottom: 1px solid rgba(255,255,255,.08);
+        }
 
-.badge{
-    display:inline-block;
-    padding:7px 18px;
-    border:1px solid #22d3ee;
-    border-radius:30px;
-    color:#67e8f9;
-    margin-bottom:16px;
-}
+        .logo {
+            color: #22d3ee;
+            font-size: 25px;
+            font-weight: bold;
+        }
 
-.hero h1{
-    font-size:43px;
-    margin-bottom:10px;
-}
+        .home-link {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 14px;
+        }
 
-.hero p{
-    color:#cbd5e1;
-}
+        .home-link:hover {
+            color: #22d3ee;
+        }
 
-.container{
-    width:92%;
-    max-width:1050px;
-    margin:50px auto;
-}
 
-.section-title{
-    text-align:center;
-    margin-bottom:30px;
-}
+        /* واجهة الصفحة */
 
-.section-title h2{
-    font-size:32px;
-    color:#fff;
-}
+        .hero {
+            min-height: 310px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 50px 20px;
 
-.section-title p{
-    color:#94a3b8;
-}
+            background:
+                radial-gradient(
+                    circle at top right,
+                    rgba(14,165,233,.32),
+                    transparent 40%
+                ),
+                linear-gradient(
+                    135deg,
+                    #0f172a,
+                    #082f49,
+                    #0f172a
+                );
+        }
 
-.evidence-card{
-    background:linear-gradient(145deg,#111c2e,#0d1726);
-    border:1px solid rgba(255,255,255,.08);
-    border-radius:22px;
-    padding:28px;
-    box-shadow:0 15px 40px rgba(0,0,0,.22);
-}
+        .hero-content {
+            max-width: 850px;
+        }
 
-.evidence-card h3{
-    font-size:25px;
-    color:#22d3ee;
-    margin-bottom:10px;
-}
+        .badge {
+            display: inline-block;
+            padding: 7px 18px;
+            margin-bottom: 16px;
+            border-radius: 30px;
+            border: 1px solid #22d3ee;
+            color: #67e8f9;
+            background: rgba(34,211,238,.07);
+        }
 
-.evidence-card p{
-    color:#cbd5e1;
-    margin-bottom:20px;
-}
+        .hero h1 {
+            font-size: 44px;
+            margin-bottom: 10px;
+        }
 
-.evidence-image{
-    width:100%;
-    height:auto;
-    border-radius:18px;
-    display:block;
-    border:1px solid rgba(255,255,255,.1);
-}
+        .hero p {
+            color: #cbd5e1;
+            font-size: 17px;
+        }
 
-.image-btn{
-    display:inline-block;
-    margin-top:20px;
-    padding:11px 22px;
-    background:linear-gradient(135deg,#22d3ee,#38bdf8);
-    color:#07111f;
-    text-decoration:none;
-    border-radius:11px;
-    font-weight:bold;
-}
 
-.note{
-    margin-top:30px;
-    padding:20px;
-    border-radius:15px;
-    background:rgba(255,255,255,.03);
-    border:1px solid rgba(255,255,255,.06);
-    color:#94a3b8;
-}
+        /* المحتوى */
 
-footer{
-    margin-top:60px;
-    padding:30px 20px;
-    text-align:center;
-    background:#050a12;
-    color:#94a3b8;
-}
+        .container {
+            width: 92%;
+            max-width: 1050px;
+            margin: 55px auto;
+        }
 
-@media(max-width:650px){
+        .section-title {
+            text-align: center;
+            margin-bottom: 35px;
+        }
 
-    .hero h1{
-        font-size:34px;
-    }
+        .section-title span {
+            color: #22d3ee;
+            font-size: 14px;
+        }
 
-    .evidence-card{
-        padding:20px;
-    }
-}
+        .section-title h2 {
+            font-size: 34px;
+            margin: 5px 0;
+        }
 
-</style>
+        .section-title p {
+            color: #94a3b8;
+        }
+
+
+        /* بطاقة الشاهد */
+
+        .evidence-card {
+            background:
+                linear-gradient(
+                    145deg,
+                    #111c2e,
+                    #0d1726
+                );
+
+            border: 1px solid rgba(255,255,255,.08);
+            border-radius: 22px;
+            padding: 28px;
+
+            box-shadow:
+                0 15px 40px rgba(0,0,0,.22);
+        }
+
+        .evidence-icon {
+            width: 58px;
+            height: 58px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 16px;
+
+            background: rgba(34,211,238,.10);
+
+            font-size: 28px;
+
+            margin-bottom: 18px;
+        }
+
+        .evidence-card h3 {
+            color: #22d3ee;
+            font-size: 25px;
+            margin-bottom: 10px;
+        }
+
+        .evidence-card p {
+            color: #cbd5e1;
+            margin-bottom: 22px;
+        }
+
+
+        /* الصورة */
+
+        .image-wrapper {
+            width: 100%;
+            text-align: center;
+            overflow: hidden;
+            border-radius: 18px;
+
+            background: #0b1524;
+
+            border:
+                1px solid rgba(255,255,255,.08);
+        }
+
+        .evidence-image {
+            display: block;
+            width: 100%;
+            height: auto;
+            margin: auto;
+        }
+
+
+        /* الزر */
+
+        .image-btn {
+            display: inline-block;
+
+            margin-top: 20px;
+
+            padding: 11px 22px;
+
+            border-radius: 11px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #22d3ee,
+                    #38bdf8
+                );
+
+            color: #07111f;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            transition: .3s;
+        }
+
+        .image-btn:hover {
+            transform: translateY(-2px);
+            background: #67e8f9;
+        }
+
+
+        /* الملاحظة */
+
+        .note {
+            margin-top: 30px;
+            padding: 20px;
+
+            text-align: center;
+
+            border-radius: 16px;
+
+            background:
+                rgba(255,255,255,.03);
+
+            border:
+                1px solid rgba(255,255,255,.06);
+
+            color: #94a3b8;
+        }
+
+
+        /* التذييل */
+
+        footer {
+            margin-top: 60px;
+
+            padding: 32px 20px;
+
+            text-align: center;
+
+            background: #050a12;
+
+            color: #94a3b8;
+
+            border-top:
+                1px solid rgba(255,255,255,.07);
+        }
+
+        footer strong {
+            color: #22d3ee;
+        }
+
+
+        /* الجوال */
+
+        @media(max-width: 650px) {
+
+            .hero h1 {
+                font-size: 34px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .container {
+                width: 94%;
+            }
+
+            .evidence-card {
+                padding: 20px;
+            }
+
+            header {
+                padding: 15px 4%;
+            }
+
+        }
+
+    </style>
+
 </head>
 
+
 <body>
+
 
 <header>
 
@@ -170,19 +317,22 @@ footer{
         إنجازي
     </div>
 
-    <a href="index.html" class="back">
+    <a
+        href="index.html"
+        class="home-link">
         العودة للرئيسية ←
     </a>
 
 </header>
 
 
+
 <section class="hero">
 
-    <div>
+    <div class="hero-content">
 
         <span class="badge">
-            الشراكة المجتمعية
+            الشراكة والتواصل
         </span>
 
         <h1>
@@ -190,7 +340,7 @@ footer{
         </h1>
 
         <p>
-            توثيق قنوات التواصل والتفاعل والمشاركة
+            توثيق شواهد التواصل والتفاعل والمشاركة
             مع أولياء الأمور والمجتمع المدرسي
         </p>
 
@@ -199,66 +349,98 @@ footer{
 </section>
 
 
+
 <main class="container">
 
+
     <div class="section-title">
+
+        <span>
+            الشواهد والممارسات
+        </span>
 
         <h2>
             شواهد التفاعل
         </h2>
 
         <p>
-            نماذج موثقة للمشاركة والتواصل مع أولياء الأمور
+            نماذج موثقة للتواصل والمشاركة مع أولياء الأمور
         </p>
 
     </div>
 
 
-    <div class="evidence-card">
+
+    <article class="evidence-card">
+
+        <div class="evidence-icon">
+            👨‍👩‍👧‍👦
+        </div>
+
 
         <h3>
             التفاعل مع أولياء الأمور والمجتمع المدرسي
         </h3>
 
+
         <p>
-            شاهد يوثق التفاعل والمشاركة مع منشورات وفعاليات المدرسة
-            بمناسبة اليوم الوطني السعودي 96، ويعكس دور التواصل الرقمي
-            في تعزيز مشاركة أولياء الأمور والمجتمع المدرسي.
+            شاهد يوثق التفاعل والمشاركة مع منشورات
+            وفعاليات المدرسة بمناسبة اليوم الوطني السعودي 96،
+            ويبرز أثر التواصل الرقمي في تعزيز مشاركة
+            أولياء الأمور والمجتمع المدرسي.
         </p>
 
-        <img
-            src="parents-interaction-01.jpeg"
-            alt="شاهد التفاعل مع أولياء الأمور"
-            class="evidence-image"
-        >
+
+        <div class="image-wrapper">
+
+            <img
+                src="parents-interaction-01.jpeg"
+                alt="شاهد التفاعل مع أولياء الأمور"
+                class="evidence-image">
+
+        </div>
+
 
         <a
             href="parents-interaction-01.jpeg"
             target="_blank"
+            rel="noopener"
             class="image-btn">
             عرض الصورة بالحجم الكامل
         </a>
 
-    </div>
+    </article>
+
 
 
     <div class="note">
-        سيتم إضافة شواهد جديدة إلى هذا القسم لتوثيق
-        صور التواصل والتفاعل مع أولياء الأمور على مدار العام الدراسي.
+        سيتم إضافة المزيد من الشواهد إلى هذا القسم
+        خلال العام الدراسي لتوثيق التواصل والتفاعل
+        مع أولياء الأمور.
     </div>
+
 
 </main>
 
 
+
 <footer>
 
-    منصة إنجازي
+    <strong>
+        منصة إنجازي
+    </strong>
+
     <br>
+
     الأستاذ / عامر بن عبده المحجاني
+
     <br>
+
     «إنجاز اليوم... أثر يبقى للغد»
 
 </footer>
 
+
 </body>
+
 </html>
