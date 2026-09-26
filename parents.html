@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>التفاعل مع أولياء الأمور | إنجازي</title>
+<title>التفاعل مع أولياء الأمور | منصة إنجازي</title>
 
 <style>
 
@@ -15,11 +15,16 @@
     padding:0;
 }
 
+html{
+    scroll-behavior:smooth;
+}
+
 body{
-    font-family:Tahoma,Arial,sans-serif;
+    font-family:Tahoma, Arial, sans-serif;
     background:#07111f;
-    color:white;
+    color:#ffffff;
     line-height:1.8;
+    min-height:100vh;
 }
 
 header{
@@ -38,21 +43,40 @@ header{
     font-weight:bold;
 }
 
-.back{
+.home-link{
     color:#cbd5e1;
     text-decoration:none;
+    font-size:14px;
+}
+
+.home-link:hover{
+    color:#22d3ee;
 }
 
 .hero{
     min-height:310px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
     padding:50px 20px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+
     background:
-        radial-gradient(circle at top right,rgba(14,165,233,.30),transparent 40%),
-        linear-gradient(135deg,#0f172a,#082f49,#0f172a);
+        radial-gradient(
+            circle at top right,
+            rgba(14,165,233,.30),
+            transparent 40%
+        ),
+        linear-gradient(
+            135deg,
+            #0f172a,
+            #082f49,
+            #0f172a
+        );
+}
+
+.hero-content{
+    max-width:850px;
 }
 
 .badge{
@@ -62,6 +86,7 @@ header{
     border:1px solid #22d3ee;
     border-radius:30px;
     color:#67e8f9;
+    background:rgba(34,211,238,.07);
 }
 
 .hero h1{
@@ -71,320 +96,318 @@ header{
 
 .hero p{
     color:#cbd5e1;
+    font-size:17px;
 }
 
 .container{
     width:92%;
     max-width:1050px;
-    margin:50px auto;
+    margin:55px auto;
 }
 
-.title{
+.section-title{
     text-align:center;
-    margin-bottom:30px;
+    margin-bottom:35px;
 }
 
-.title h2{
-    font-size:32px;
+.section-title span{
+    color:#22d3ee;
+    font-size:14px;
 }
 
-.title p{
+.section-title h2{
+    font-size:34px;
+    margin:5px 0;
+}
+
+.section-title p{
     color:#94a3b8;
 }
 
-.card{
-    background:linear-gradient(145deg,#111c2e,#0d1726);
+.evidence-card{
+    background:linear-gradient(
+        145deg,
+        #111c2e,
+        #0d1726
+    );
+
     border:1px solid rgba(255,255,255,.08);
     border-radius:22px;
     padding:28px;
-    box-shadow:0 15px 40px rgba(0,0,0,.22);
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.22);
 }
 
-.card h3{
+.evidence-icon{
+    width:58px;
+    height:58px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:16px;
+
+    background:rgba(34,211,238,.10);
+
+    font-size:28px;
+
+    margin-bottom:18px;
+}
+
+.evidence-card h3{
     color:#22d3ee;
     font-size:25px;
     margin-bottom:10px;
 }
 
-.card p{
+.evidence-card p{
     color:#cbd5e1;
     margin-bottom:22px;
 }
 
-.image-box{
+.image-wrapper{
     width:100%;
-    min-height:250px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:#0b1524;
-    border-radius:18px;
+    text-align:center;
     overflow:hidden;
+    border-radius:18px;
+
+    background:#0b1524;
+
+    border:1px solid rgba(255,255,255,.08);
 }
 
-.image-box img{
+.evidence-image{
+    display:block;
     width:100%;
     height:auto;
-    display:block;
+    margin:auto;
 }
 
-.loading{
-    color:#94a3b8;
-    padding:40px;
-}
+.image-btn{
+    display:inline-block;
 
-.open-btn{
-    display:none;
     margin-top:20px;
+
     padding:11px 22px;
-    background:linear-gradient(135deg,#22d3ee,#38bdf8);
-    color:#07111f;
-    text-decoration:none;
+
     border-radius:11px;
+
+    background:linear-gradient(
+        135deg,
+        #22d3ee,
+        #38bdf8
+    );
+
+    color:#07111f;
+
+    text-decoration:none;
+
     font-weight:bold;
+
+    transition:.3s;
+}
+
+.image-btn:hover{
+    transform:translateY(-2px);
+    background:#67e8f9;
 }
 
 .note{
     margin-top:30px;
     padding:20px;
+
     text-align:center;
-    border-radius:15px;
+
+    border-radius:16px;
+
     background:rgba(255,255,255,.03);
+
+    border:1px solid rgba(255,255,255,.06);
+
     color:#94a3b8;
 }
 
 footer{
     margin-top:60px;
-    padding:30px 20px;
+
+    padding:32px 20px;
+
     text-align:center;
+
     background:#050a12;
+
     color:#94a3b8;
+
+    border-top:1px solid rgba(255,255,255,.07);
+}
+
+footer strong{
+    color:#22d3ee;
 }
 
 @media(max-width:650px){
+
     .hero h1{
         font-size:34px;
     }
 
-    .card{
+    .hero p{
+        font-size:15px;
+    }
+
+    .container{
+        width:94%;
+    }
+
+    .evidence-card{
         padding:20px;
     }
+
+    header{
+        padding:15px 4%;
+    }
+
 }
 
 </style>
+
 </head>
 
 
 <body>
 
+
 <header>
 
-<div class="logo">
-إنجازي
-</div>
+    <div class="logo">
+        إنجازي
+    </div>
 
-<a href="index.html" class="back">
-العودة للرئيسية ←
-</a>
+    <a
+        href="index.html"
+        class="home-link">
+        العودة للرئيسية ←
+    </a>
 
 </header>
 
 
+
 <section class="hero">
 
-<div>
+    <div class="hero-content">
 
-<span class="badge">
-الشراكة والتواصل
-</span>
+        <span class="badge">
+            الشراكة والتواصل
+        </span>
 
-<h1>
-التفاعل مع أولياء الأمور
-</h1>
+        <h1>
+            التفاعل مع أولياء الأمور
+        </h1>
 
-<p>
-توثيق التواصل والتفاعل والمشاركة
-مع أولياء الأمور والمجتمع المدرسي
-</p>
+        <p>
+            توثيق شواهد التواصل والتفاعل والمشاركة
+            مع أولياء الأمور والمجتمع المدرسي
+        </p>
 
-</div>
+    </div>
 
 </section>
 
 
+
 <main class="container">
 
-<div class="title">
 
-<h2>
-شواهد التفاعل
-</h2>
+    <div class="section-title">
 
-<p>
-نماذج موثقة للتواصل والمشاركة مع أولياء الأمور
-</p>
+        <span>
+            الشواهد والممارسات
+        </span>
 
-</div>
+        <h2>
+            شواهد التفاعل
+        </h2>
 
+        <p>
+            نماذج موثقة للتواصل والمشاركة مع أولياء الأمور
+        </p>
 
-<article class="card">
-
-<h3>
-التفاعل مع أولياء الأمور والمجتمع المدرسي
-</h3>
-
-<p>
-شاهد يوثق التفاعل والمشاركة مع منشورات وفعاليات المدرسة
-بمناسبة اليوم الوطني السعودي 96، ويبرز أثر التواصل الرقمي
-في تعزيز مشاركة أولياء الأمور والمجتمع المدرسي.
-</p>
+    </div>
 
 
-<div class="image-box" id="imageBox">
 
-<div class="loading">
-جاري تحميل الشاهد...
-</div>
+    <article class="evidence-card">
 
-</div>
-
-
-<a
-id="openImage"
-target="_blank"
-rel="noopener"
-class="open-btn">
-
-عرض الصورة بالحجم الكامل
-
-</a>
-
-</article>
+        <div class="evidence-icon">
+            👨‍👩‍👧‍👦
+        </div>
 
 
-<div class="note">
+        <h3>
+            التفاعل مع أولياء الأمور والمجتمع المدرسي
+        </h3>
 
-سيتم إضافة المزيد من الشواهد إلى هذا القسم
-خلال العام الدراسي.
 
-</div>
+        <p>
+            شاهد يوثق التفاعل والمشاركة مع منشورات وفعاليات المدرسة
+            بمناسبة اليوم الوطني السعودي 96، ويبرز أثر التواصل الرقمي
+            في تعزيز مشاركة أولياء الأمور والمجتمع المدرسي.
+        </p>
+
+
+        <div class="image-wrapper">
+
+            <img
+                src="https://raw.githubusercontent.com/alaaasiri90-oss/amer-injazi/main/parents-interaction-01.jpeg"
+                alt="شاهد التفاعل مع أولياء الأمور"
+                class="evidence-image">
+
+        </div>
+
+
+        <a
+            href="https://raw.githubusercontent.com/alaaasiri90-oss/amer-injazi/main/parents-interaction-01.jpeg"
+            target="_blank"
+            rel="noopener"
+            class="image-btn">
+            عرض الصورة بالحجم الكامل
+        </a>
+
+    </article>
+
+
+
+    <div class="note">
+        سيتم إضافة المزيد من الشواهد إلى هذا القسم
+        خلال العام الدراسي لتوثيق التواصل والتفاعل
+        مع أولياء الأمور.
+    </div>
+
 
 </main>
 
 
+
 <footer>
 
-منصة إنجازي
-<br>
-الأستاذ / عامر بن عبده المحجاني
-<br>
-«إنجاز اليوم... أثر يبقى للغد»
+    <strong>
+        منصة إنجازي
+    </strong>
+
+    <br>
+
+    الأستاذ / عامر بن عبده المحجاني
+
+    <br>
+
+    «إنجاز اليوم... أثر يبقى للغد»
 
 </footer>
 
 
-<script>
-
-const owner = "alaaasiri90-oss";
-const repo = "amer-injazi";
-
-async function loadParentImage(){
-
-    const box =
-        document.getElementById("imageBox");
-
-    const button =
-        document.getElementById("openImage");
-
-    try{
-
-        const api =
-            "https://api.github.com/repos/" +
-            owner +
-            "/" +
-            repo +
-            "/git/trees/main?recursive=1";
-
-        const response =
-            await fetch(api);
-
-        if(!response.ok){
-            throw new Error("GitHub API error");
-        }
-
-        const data =
-            await response.json();
-
-        const image =
-            data.tree.find(item => {
-
-                const path =
-                    item.path.toLowerCase();
-
-                return (
-                    item.type === "blob" &&
-                    path.includes("parents-interaction") &&
-                    /\.(jpg|jpeg|png|webp)$/i.test(path)
-                );
-
-            });
-
-
-        if(!image){
-
-            box.innerHTML =
-                '<div class="loading">لم يتم العثور على صورة الشاهد.</div>';
-
-            return;
-        }
-
-
-        const encodedPath =
-            image.path
-            .split("/")
-            .map(part => encodeURIComponent(part))
-            .join("/");
-
-
-        const imageURL =
-            "https://raw.githubusercontent.com/" +
-            owner +
-            "/" +
-            repo +
-            "/main/" +
-            encodedPath;
-
-
-        box.innerHTML =
-            '<img src="' +
-            imageURL +
-            '" alt="شاهد التفاعل مع أولياء الأمور">';
-
-
-        button.href =
-            imageURL;
-
-        button.style.display =
-            "inline-block";
-
-    }
-
-    catch(error){
-
-        console.error(error);
-
-        box.innerHTML =
-            '<div class="loading">تعذر تحميل الصورة حاليًا.</div>';
-
-    }
-
-}
-
-
-loadParentImage();
-
-</script>
-
-
 </body>
+
 </html>
